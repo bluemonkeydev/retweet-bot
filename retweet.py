@@ -137,21 +137,21 @@ err_counter = 0
 print "total tweets: " + str(len(timeline))
 for status in timeline:
   try:
+    # wait 0 to 2 minutes for each re-tweet
+    waiting = randint(0,2*60)
+    print("waiting: " + str(waiting))
+    time.sleep(waiting)
+
     print "%(id)s: (%(date)s) %(name)s: %(message)s\n" % \
       { "id" : status.id,
       "date" : status.created_at,
       "name" : status.author.screen_name.encode('utf-8'),
       "message" : status.text.encode('utf-8') }
 
-    # wait 0 to 2 minutes for each re-tweet
-    waiting = randint(0,2*60)
-    print("waiting: " + str(waiting))
-    time.sleep(waiting)
     api.retweet(status.id)
 
     if (favorite == "yes"):
-      api.create_favorite(id)
-      pass
+      api.create_favorite(status.id)
     
     tw_counter += 1
     if tw_counter >= maxretweets:
