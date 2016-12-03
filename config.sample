@@ -1,7 +1,21 @@
 [settings]
+# comma list
 search_query:#yourHashtag
-# Leave empty for all languages
+
+# comma list, just the username without the @
+usernames:wbushee,wiredforcoding
+
+# leave empty for all languages
 tweet_language:
+
+# max tweets BEFORE the filters are applied
+max_tweets:10
+
+# run through cron and set this value to pick a random number of minutes before running.
+random_delay:45
+
+# also favorite the tweet: yes/no
+favorite:yes
 
 # Create your app on http://apps.twitter.com
 [twitter]
